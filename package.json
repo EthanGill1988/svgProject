@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/EthanGill1988/svgProject/issues"
   },
-  "homepage": "https://github.com/EthanGill1988/svgProject#readme"
+  "homepage": "https://github.com/EthanGill1988/svgProject#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
 }
