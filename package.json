@@ -1,5 +1,20 @@
 {
-  "dependencies": {
-    "inquirer": "^9.2.7"
-  }
+  "name": "svgproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanGill1988/svgProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EthanGill1988/svgProject/issues"
+  },
+  "homepage": "https://github.com/EthanGill1988/svgProject#readme"
 }
