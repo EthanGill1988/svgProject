@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-    <rect width="100%" height="100%" fill="#555" />
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#333" font-size="50">KD</text>
-  </svg>
+          <circle cx="50%" cy="50%" r="50%" fill="#666" />
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#333" font-size="50">FTP</text>
+        </svg>

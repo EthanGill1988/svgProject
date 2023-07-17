@@ -47,12 +47,33 @@ inquirer
   });
 
   // Helper function to generate SVG content
-function generateSVG(answers) {
-  const { text, textColor, shape, shapeColor } = answers;
-  const svgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-    <rect width="100%" height="100%" fill="#${shapeColor}" />
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#${textColor}" font-size="50">${text}</text>
-  </svg>`;
+  function generateSVG(answers) {
+    const { text, textColor, shape, shapeColor } = answers;
+    let svgTemplate = '';
+  
+    switch (shape) {
+      case 'circle':
+        svgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+          <circle cx="50%" cy="50%" r="50%" fill="#${shapeColor}" />
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#${textColor}" font-size="50">${text}</text>
+        </svg>`;
+        break;
+  
+      case 'triangle':
+        svgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+          <polygon points="50%,0 0,100 100,100" fill="#${shapeColor}" />
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#${textColor}" font-size="50">${text}</text>
+        </svg>`;
+        break;
+  
+      case 'square':
+      default:
+        svgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+          <rect width="100%" height="100%" fill="#${shapeColor}" />
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#${textColor}" font-size="50">${text}</text>
+        </svg>`;
+        break;
+    }
 
   return svgTemplate;
 }
