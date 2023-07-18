@@ -2,35 +2,55 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const colorNameList = require('color-name-list');
 
+// Function to check if a color input is a valid color keyword
+function isValidColorKeyword(input) {
+  const colorNames = colorNameList.map(color => color.name.toLowerCase());
+  return colorNames.includes(input.toLowerCase());
+}
+
+// Function to convert a color keyword to its hexadecimal value
+function getColorHexFromKeyword(input) {
+  const color = colorNameList.find(color => color.name.toLowerCase() === input.toLowerCase());
+  return color ? color.hex : null;
+}
+// prompt the user for information
 inquirer
 .prompt([
     {
         name: 'text',
-        message: 'Enter up to three characters:',
-        validate: input => /^[a-zA-Z0-9]{0,3}$/.test(input),
+        message: 'Enter up to five characters:',
+        validate: input => /^[a-zA-Z0-9]{0,5}$/.test(input),
         filter: input => input.toUpperCase()
       },
       {
         name: 'textColor',
-        message: 'Enter text color:',
-        validate: input => /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(input),
-        filter: input => input.replace('#', '')
+      message: 'Enter text color (e.g., red, blue, #RRGGBB):',
+      validate: input => /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(input) || isValidColorKeyword(input),
+      filter: input => {
+        // If the input is a valid color keyword, convert it to hexadecimal value
+        const colorHex = getColorHexFromKeyword(input);
+        return colorHex ? colorHex.replace('#', '') : input.replace('#', '');
       },
+    },
       {
         name: 'shape',
         message: 'Choose a shape:',
         type: 'list',
         choices: ['circle', 'triangle', 'square']
       },
+    
       {
         name: 'shapeColor',
         message: 'Enter shape color:',
         validate: input => /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(input),
-        filter: input => input.replace('#', '')
+        filter: input => {
+          const colorHex = getColorHexFromKeyword(input);
+        return colorHex ? colorHex.replace('#', '') : input.replace('#', '');
+        }
       }
     ])
     .then(answers => {
-        // Handle user's answers
+        
     const svg = generateSVG(answers);
 
     // Write SVG to file
