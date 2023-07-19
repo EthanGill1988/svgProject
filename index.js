@@ -19,7 +19,7 @@ inquirer
     {
         name: 'text',
         message: 'Enter up to five characters:',
-        validate: input => /^[a-zA-Z0-9]{0,5}$/.test(input),
+        validate: input => /^[a-zA-Z0-9]{0,3}$/.test(input),
         filter: input => input.toUpperCase()
       },
       {
