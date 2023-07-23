@@ -67,7 +67,7 @@ inquirer
     console.error('Error:', err);
   });
 
-  // Helper function to generate SVG content
+  // Helper function to produce SVG content
   function generateSVG(answers) {
     const { text, textColor, shape, shapeColor } = answers;
     let svgTemplate = '';
