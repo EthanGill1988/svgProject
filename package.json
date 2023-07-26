@@ -20,5 +20,8 @@
   "dependencies": {
     "color-name-list": "^10.10.0",
     "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
   }
 }
